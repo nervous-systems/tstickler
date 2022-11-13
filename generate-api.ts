@@ -96,7 +96,7 @@ type NSDecl = Decl & Namespaced;
 const walker: NodeWalker<NSDecl[], NSDecl, Decls> = {
   visit(node: any, ns: string[], tc: ts.TypeChecker): NSDecl | null {
     return {namespace: (ts.isModuleDeclaration(node) ?
-              [...ns, node.name.text] : ns), ...decl(node, tc)} as NSDecl;
+              [...ns, node.name.text] : ns), ...decl(node, tc)};
   },
 
   combine(decls: NSDecl[], update: NSDecl): NSDecl[] {
